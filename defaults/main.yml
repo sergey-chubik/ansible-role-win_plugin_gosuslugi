@@ -1,0 +1,7 @@
+---
+# defaults file for win_plugin_gosuslugi
+win_plugin_gosuslugi_files: "{{ role_path }}/files"
+win_plugin_gosuslugi_copy_path: 'C:\temp\gos\'
+win_plugin_gosuslugi_install_package: IFCPlugin-x64.msi
+# Install (present) or Uninstall (absent) Applications (Default: present)
+win_plugin_gosuslugi_install_state: present

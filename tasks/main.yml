@@ -1,0 +1,19 @@
+---
+# tasks file for win_plugin_gosuslugi
+
+- name: win_plugin_gosuslugi | Copy install packages in directory temp
+  win_copy:
+    src: "{{ win_plugin_gosuslugi_files }}/{{ win_plugin_gosuslugi_install_package }}"
+    dest: "{{ win_plugin_gosuslugi_copy_path }}"
+
+- name: win_plugin_gosuslugi | Install IFCPlugin for Gosuslug
+  win_package:
+    path: "{{ win_plugin_gosuslugi_copy_path }}{{ win_plugin_gosuslugi_install_package }}"
+    product_id: '{F1362586-9241-4AEA-AF0A-2BC25AAB39E9}'
+    arguments: '/quiet /norestart'
+    state: "{{ win_plugin_gosuslugi_install_state }}"
+
+- name: win_plugin_gosuslugi | Remove directory temp
+  win_file:
+    path: "{{ win_plugin_gosuslugi_copy_path }}"
+    state: absent
